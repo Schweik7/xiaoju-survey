@@ -26,41 +26,30 @@
 
 .star-ratings-explanation {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* 等距分布各个项目 */
   margin: 0.2rem 0;
-  flex-wrap: wrap;
+  width: 100%;
   
   .rating-explain-item {
+    flex: 1; /* 每个项目占据相等的空间 */
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 0.24rem;
-    color: #92949d;
-    padding: 0.1rem;
-    border-radius: 0.1rem;
-    transition: all 0.3s ease;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    padding: 0.1rem 0.05rem;
     
     &.active {
-      color: $primary-color;
-      background-color: rgba($primary-color, 0.1);
-    }
-    
-    .rating-score {
-      font-weight: bold;
-      margin-bottom: 0.05rem;
+      .rating-text {
+        color: $primary-color;
+        font-weight: bold;
+      }
     }
     
     .rating-text {
-      text-align: center;
       font-size: 0.22rem;
-      width: 100%;
+      color: #92949d;
+      text-align: center; /* 文本居中 */
+      width: 100%; /* 让文本占满整个容器宽度 */
+      word-wrap: break-word; /* 允许长文本换行 */
     }
   }
 }
-
-/* 可以隐藏原来的单一释义显示，如果不需要的话 */
-
-.explain.radio-star {
-  display: none;
-}
-
