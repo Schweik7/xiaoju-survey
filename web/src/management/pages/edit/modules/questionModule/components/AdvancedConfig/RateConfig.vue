@@ -20,7 +20,7 @@
         <div class="row" v-for="item in range" :key="item.index">
           <div class="score">{{ item.index }}</div>
           <div class="explain" v-if="isStar">
-            <el-input class="text" v-model="item.explain" maxlength="200" placeholder="最多200字" />
+            <el-input class="text" v-model="item.explain" maxlength="50" placeholder="最多50字" />
           </div>
           <div class="other">
             <el-switch class="is-show" v-model="item.isShowInput"></el-switch>

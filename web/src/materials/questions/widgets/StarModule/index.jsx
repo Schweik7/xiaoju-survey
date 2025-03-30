@@ -104,6 +104,8 @@ export default defineComponent({
       selectMoreView
     }
   },
+
+  // 修改后的 StarModule/index.jsx 中的 render 函数部分，现在可以呈现所有的评分释义文本了
   render() {
     const {
       field,
@@ -116,11 +118,28 @@ export default defineComponent({
       onMoreDataChange,
       rangeConfig,
       selectMoreView,
-      confirmStar
+      confirmStar,
+      starMin,
+      starMax
     } = this
+
+    // 生成所有评分选项的范围数组
+    const ratingRange = []
+    for (let i = starMin; i <= starMax; i++) {
+      ratingRange.push(i)
+    }
 
     return (
       <div class="star-wrapper-main">
+        {/* 显示所有分值对应的释义文本 */}
+        <div class="star-ratings-explanation">
+          {ratingRange.map(score => (
+            <div class={`rating-explain-item ${value == score ? 'active' : ''}`} key={score}>
+              {/* <span class="rating-score">{score}</span> */}
+              <span class="rating-text">{rangeConfig[score]?.explain || ''}</span>
+            </div>
+          ))}
+        </div>
         <BaseRate
           name={field}
           value={value}
@@ -128,7 +147,12 @@ export default defineComponent({
           iconClass={starClass}
           onChange={confirmStar}
         />
+
+
+
+        {/* 保留原有的功能：当选择一个分值时，显示对应的释义文本 */}
         {currentRangeConfig && <p class="explain radio-star">{currentRangeConfig.explain}</p>}
+
         {isShowInput && (
           <selectMoreView
             showTitle={false}

@@ -22,3 +22,45 @@
     color: #e3e4e8;
   }
 }
+
+
+.star-ratings-explanation {
+  display: flex;
+  justify-content: space-between;
+  margin: 0.2rem 0;
+  flex-wrap: wrap;
+  
+  .rating-explain-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.24rem;
+    color: #92949d;
+    padding: 0.1rem;
+    border-radius: 0.1rem;
+    transition: all 0.3s ease;
+    
+    &.active {
+      color: $primary-color;
+      background-color: rgba($primary-color, 0.1);
+    }
+    
+    .rating-score {
+      font-weight: bold;
+      margin-bottom: 0.05rem;
+    }
+    
+    .rating-text {
+      text-align: center;
+      font-size: 0.22rem;
+      width: 100%;
+    }
+  }
+}
+
+/* 可以隐藏原来的单一释义显示，如果不需要的话 */
+
+.explain.radio-star {
+  display: none;
+}
+
